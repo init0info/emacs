@@ -7,8 +7,7 @@
  '(display-battery-mode t)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   (quote
-    (projectile projectile-extras projectile-git-autofetch terraform-mode use-package elpy json-mode sml-mode popup popup-complete with-editor neotree yaml-mode yaml-tomato markdown-mode ht ace-window spu magit edit-server)))
+   '(projectile-ripgrep projectile-sift projectile-variable groovy-mode projectile projectile-extras projectile-git-autofetch terraform-mode elpy json-mode sml-mode popup popup-complete with-editor neotree yaml-mode yaml-tomato markdown-mode ht ace-window spu magit edit-server))
  '(python-shell-interpreter "python3")
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -25,9 +24,6 @@
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
 ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
-
-;; Daily upgrade melpa packages in background
-(spu-package-upgrade-daily)
 
 ;; Open recent file
 (require 'recentf)
@@ -76,8 +72,12 @@
 ;; smaller font by default, for lower-res screens
 ;; (set-face-attribute 'default nil :height 90)
 
+;; default font
+(add-to-list 'default-frame-alist
+             '(font . "Andale Mono-12"))
+
 ;; default window size
-(when window-system (set-frame-size (selected-frame) 200 68))
+(when window-system (set-frame-size (selected-frame) 200 60))
 
 ;; copy file path to kill-ring
 (defun xah-copy-file-path (&optional @dir-path-only-p)
@@ -137,12 +137,12 @@ Version 2017-01-27"
 ;; Magit Git Porcelain
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;; elpy for python projects
-(use-package elpy
-  :ensure t
-  :defer t
-  :init
-  (advice-add 'python-mode :before 'elpy-enable))
+;; ;; elpy for python projects
+;; (use-package elpy
+;;   :ensure t
+;;   :defer t
+;;   :init
+;;   (advice-add 'python-mode :before 'elpy-enable))
 
 ;; Enable Flycheck
 (when (require 'flycheck nil t)
@@ -167,3 +167,9 @@ Version 2017-01-27"
 
 ;; built-in mode for balancing bracets and quotes
 (electric-pair-mode 1)
+
+;; ;; Daily upgrade melpa packages in background
+;; (spu-package-upgrade-daily)
+
+;; Default directory
+(setq default-directory "~/")
