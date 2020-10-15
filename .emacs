@@ -8,7 +8,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (projectile projectile-extras projectile-git-autofetch terraform-mode use-package elpy json-mode sml-mode popup popup-complete with-editor neotree yaml-mode yaml-tomato markdown-mode ht ace-window spu magit edit-server)))
+    (treemacs treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet projectile projectile-extras projectile-git-autofetch terraform-mode use-package elpy json-mode sml-mode popup popup-complete with-editor yaml-mode yaml-tomato markdown-mode ht ace-window spu magit edit-server)))
  '(python-shell-interpreter "python3")
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -42,6 +42,7 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 15)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+(setq recentf-keep '(file-remote-p file-readable-p))
 
 ;; So you can drop .el files into your ~/.emacs.d/lisp directory.
 (add-to-list 'load-path "~/.emacs.d/lisp/")
@@ -65,8 +66,6 @@
 ;; Lovely 2-space tabs...
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
-
-(setq recentf-keep '(file-remote-p file-readable-p))
 
 ;; make autosave more frequent
 (setq auto-save-default 21)
@@ -123,11 +122,11 @@ Version 2017-01-27"
     (interactive "*")
     (uniquify-all-lines-region (point-min) (point-max)))
 
-;; neotree file browser
-(add-to-list 'load-path "~/.emacs.d/neotree")
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
-(setq-default neo-show-hidden-files t)
+;; ;; neotree file browser
+;; (add-to-list 'load-path "~/.emacs.d/neotree")
+;; (require 'neotree)
+;; (global-set-key [f8] 'neotree-toggle)
+;; (setq-default neo-show-hidden-files t)
 
 ;; ace-window for character-based window switching
 (global-set-key (kbd "C-x o") 'ace-window)
@@ -140,6 +139,13 @@ Version 2017-01-27"
 
 ;; Magit Git Porcelain
 (global-set-key (kbd "C-x g") 'magit-status)
+(defun my/magit-display-buffer (buffer)
+  (display-buffer
+   buffer (if (derived-mode-p 'magit-mode)
+              '(display-buffer-same-window)
+            '(nil (inhibit-same-window . t)))))
+
+(setq magit-display-buffer-function #'my/magit-display-buffer)
 
 ;; elpy for python projects
 (use-package elpy
@@ -175,7 +181,7 @@ Version 2017-01-27"
 ;; Default directory
 (setq default-directory "~/")
 
-;; Treemacsc
+;; Treemacs
 (require 'treemacs)
 (setq treemacs-width 45)
 (global-set-key (kbd "M-0") 'treemacs-select-window)
