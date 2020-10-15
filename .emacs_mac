@@ -7,7 +7,7 @@
  '(display-battery-mode t)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(projectile-ripgrep projectile-sift projectile-variable groovy-mode projectile projectile-extras projectile-git-autofetch terraform-mode elpy json-mode sml-mode popup popup-complete with-editor neotree yaml-mode yaml-tomato markdown-mode ht ace-window spu magit edit-server))
+   '(treemacs treemacs-icons-dired treemacs-magit treemacs-projectile projectile-ripgrep projectile-sift projectile-variable groovy-mode projectile projectile-extras projectile-git-autofetch terraform-mode elpy json-mode sml-mode popup popup-complete with-editor neotree yaml-mode yaml-tomato markdown-mode ht ace-window spu magit edit-server))
  '(python-shell-interpreter "python3")
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -173,3 +173,8 @@ Version 2017-01-27"
 
 ;; Default directory
 (setq default-directory "~/")
+
+(require 'treemacs)
+(setq treemacs-width 45)
+
+(global-set-key (kbd "M-0") 'treemacs-select-window)
