@@ -17,7 +17,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 143 :width normal)))))
+ '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
+
+;; smaller font by default, for lower-res screens
+;; (set-face-attribute 'default nil :height 90)
 
 ;; Melpa
 (require 'package)
@@ -76,9 +79,6 @@
 ;; better keys for splitting windows
 (global-set-key "\C-x\ |" 'split-window-horizontally)
 (global-set-key "\C-x\ -" 'split-window-vertically)
-
-;; smaller font by default, for lower-res screens
-;; (set-face-attribute 'default nil :height 90)
 
 ;; default window size
 (when window-system (set-frame-size (selected-frame) 200 68))
@@ -173,4 +173,10 @@ Version 2017-01-27"
 (electric-pair-mode 1)
 
 ;; Treemacs
+;; Default directory
+(setq default-directory "~/")
+
 (require 'treemacs)
+(setq treemacs-width 45)
+
+(global-set-key (kbd "M-0") 'treemacs-select-window)
