@@ -172,11 +172,10 @@ Version 2017-01-27"
 ;; built-in mode for balancing bracets and quotes
 (electric-pair-mode 1)
 
-;; Treemacs
 ;; Default directory
 (setq default-directory "~/")
 
+;; Treemacsc
 (require 'treemacs)
 (setq treemacs-width 45)
-
 (global-set-key (kbd "M-0") 'treemacs-select-window)
