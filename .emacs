@@ -26,6 +26,10 @@
 ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+;; If there are no archived package contents, refresh them
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
 ;; Daily upgrade melpa packages in background
 (spu-package-upgrade-daily)
 
@@ -50,7 +54,7 @@
 (load-theme 'deeper-blue t)
 
 ;; always enable line numbering
-(global-linum-mode 1)
+(global-linum-mode t)
 
 ;; Remove Trailing Whitespace on Save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -167,3 +171,6 @@ Version 2017-01-27"
 
 ;; built-in mode for balancing bracets and quotes
 (electric-pair-mode 1)
+
+;; Treemacs
+(require 'treemacs)
