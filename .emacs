@@ -185,3 +185,5 @@ Version 2017-01-27"
 (require 'treemacs)
 (setq treemacs-width 45)
 (global-set-key (kbd "M-0") 'treemacs-select-window)
+
+(setq ediff-window-setup-function 'ediff-setup-window-plain)
