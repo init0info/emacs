@@ -25,7 +25,7 @@
 ;; Melpa
 (require 'package)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/")  t)
-(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
+;;(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
 ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
@@ -186,4 +186,4 @@ Version 2017-01-27"
 (setq treemacs-width 45)
 (global-set-key (kbd "M-0") 'treemacs-select-window)
 
-;;(setq ediff-window-setup-function 'ediff-setup-window-plain)
+(setq ediff-window-setup-function 'ediff-setup-window-plain)
