@@ -7,8 +7,7 @@
  '(display-battery-mode t)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   (quote
-    (treemacs treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet projectile projectile-extras projectile-git-autofetch terraform-mode use-package elpy json-mode sml-mode popup popup-complete with-editor yaml-mode yaml-tomato markdown-mode ht ace-window spu magit edit-server)))
+   '(paradox auto-package-update groovy-mode treemacs treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet projectile projectile-extras projectile-git-autofetch terraform-mode use-package elpy json-mode sml-mode popup popup-complete yaml-mode yaml-tomato markdown-mode ht ace-window magit edit-server))
  '(python-shell-interpreter "python3")
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -19,6 +18,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
 
+;; (debug-on-entry 'package-initialize)
+
 ;; smaller font by default, for lower-res screens
 ;; (set-face-attribute 'default nil :height 90)
 
@@ -26,7 +27,7 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/")  t)
 ;;(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
-;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 ;; If there are no archived package contents, refresh them
@@ -34,7 +35,20 @@
   (package-refresh-contents))
 
 ;; Daily upgrade melpa packages in background
-(spu-package-upgrade-daily)
+;; (spu-package-upgrade-daily)
+;; (use-package auto-package-update
+;;    :ensure t
+;;    :config
+;;    (setq auto-package-update-delete-old-versions t
+;;          auto-package-update-interval 4)
+;;    (auto-package-update-maybe))
+
+;; Additional package manager functionality
+(use-package paradox
+  :init
+  (setq paradox-github-token t)
+  (setq paradox-execute-asynchronously t)
+  (setq paradox-automatically-star t))
 
 ;; Open recent file
 (require 'recentf)
