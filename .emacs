@@ -7,7 +7,9 @@
  '(display-battery-mode t)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(paradox auto-package-update groovy-mode treemacs treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet projectile projectile-extras projectile-git-autofetch terraform-mode use-package elpy json-mode sml-mode popup popup-complete yaml-mode yaml-tomato markdown-mode ht ace-window magit edit-server))
+   (quote
+    (paradox auto-package-update groovy-mode treemacs treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet projectile projectile-extras projectile-git-autofetch terraform-mode use-package elpy json-mode sml-mode popup popup-complete with-editor yaml-mode yaml-tomato markdown-mode ht ace-window magit edit-server use-package)))
+
  '(python-shell-interpreter "python3")
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -201,3 +203,12 @@ Version 2017-01-27"
 (global-set-key (kbd "M-0") 'treemacs-select-window)
 
 (setq ediff-window-setup-function 'ediff-setup-window-plain)
+
+;; Markdown mode for ediwing md files
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
