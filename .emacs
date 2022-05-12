@@ -70,6 +70,9 @@
 ;; Show column numbers.
 (setq-default column-number-mode t)
 
+;; Enable global auto-revert mode
+(global-auto-revert-mode t)
+
 ;; Easiest on my eyes
 (load-theme 'deeper-blue t)
 
