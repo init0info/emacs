@@ -29,7 +29,7 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/")  t)
 ;;(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 ;; If there are no archived package contents, refresh them
@@ -64,8 +64,8 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; For the edit in emacs Chrome extension
-(require 'edit-server)
-(edit-server-start)
+;;(require 'edit-server)
+;;(edit-server-start)
 
 ;; Show column numbers.
 (setq-default column-number-mode t)
@@ -194,7 +194,7 @@ Version 2017-01-27"
                       (unless (eq (car args) 'flymake-mode)
                         (apply fun args))))
 
-;; built-in mode for balancing bracets and quotes
+;; built-in mode for balancing brackets and quotes
 (electric-pair-mode 1)
 
 ;; Default directory
