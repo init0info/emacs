@@ -6,9 +6,9 @@
  '(column-number-mode t)
  '(display-battery-mode t)
  '(inhibit-startup-screen t)
- '(package-selected-packages
-   (quote
-    (paradox auto-package-update groovy-mode treemacs treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet projectile projectile-extras projectile-git-autofetch terraform-mode use-package elpy json-mode sml-mode popup popup-complete with-editor yaml-mode yaml-tomato markdown-mode ht ace-window magit edit-server use-package)))
+;; '(package-selected-packages
+;;   (quote
+;;    (paradox auto-package-update groovy-mode treemacs treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet projectile projectile-extras projectile-git-autofetch terraform-mode use-package elpy json-mode sml-mode popup popup-complete with-editor yaml-mode yaml-tomato markdown-mode ht ace-window magit edit-server use-package)))
 
  '(python-shell-interpreter "python3")
  '(show-paren-mode t)
