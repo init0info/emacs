@@ -6,10 +6,8 @@
  '(column-number-mode t)
  '(display-battery-mode t)
  '(inhibit-startup-screen t)
-;; '(package-selected-packages
-;;   (quote
-;;    (paradox auto-package-update groovy-mode treemacs treemacs-icons-dired treemacs-magit treemacs-projectile yasnippet projectile projectile-extras projectile-git-autofetch terraform-mode use-package elpy json-mode sml-mode popup popup-complete with-editor yaml-mode yaml-tomato markdown-mode ht ace-window magit edit-server use-package)))
-
+ '(package-selected-packages
+   '(elpy markdown-mode paradox treemacs-magit treemacs-projectile))
  '(python-shell-interpreter "python3")
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -18,7 +16,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
+ '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 100 :width normal)))))
 
 ;; (debug-on-entry 'package-initialize)
 
@@ -77,7 +75,7 @@
 (load-theme 'deeper-blue t)
 
 ;; always enable line numbering
-(global-linum-mode t)
+(global-display-line-numbers-mode 1)
 
 ;; Remove Trailing Whitespace on Save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -99,7 +97,7 @@
 (global-set-key "\C-x\ -" 'split-window-vertically)
 
 ;; default window size
-(when window-system (set-frame-size (selected-frame) 200 68))
+(when window-system (set-frame-size (selected-frame) 200 58))
 
 ;; copy file path to kill-ring
 (defun xah-copy-file-path (&optional @dir-path-only-p)
@@ -179,8 +177,8 @@ Version 2017-01-27"
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; Enable autopep8
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+;(require 'py-autopep8)
+;(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 ;;Use flycheck instead of flymake
 (when (load "flycheck" t t)
