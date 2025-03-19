@@ -6,8 +6,7 @@
  '(column-number-mode t)
  '(display-battery-mode t)
  '(inhibit-startup-screen t)
- '(package-selected-packages
-   '(treemacs treemacs-icons-dired treemacs-magit treemacs-projectile projectile-ripgrep projectile-sift projectile-variable groovy-mode projectile projectile-extras projectile-git-autofetch terraform-mode elpy json-mode sml-mode popup popup-complete with-editor neotree yaml-mode yaml-tomato markdown-mode ht ace-window spu magit edit-server))
+ '(package-selected-packages '(linum-relative magit markdown-mode treemacs))
  '(python-shell-interpreter "python3")
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -21,8 +20,8 @@
 ;; Melpa
 (require 'package)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/")  t)
-(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
-;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 ;; Open recent file
@@ -36,8 +35,8 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;; For the edit in emacs Chrome extension
-(require 'edit-server)
-(edit-server-start)
+;(require 'edit-server)
+;(edit-server-start)
 
 ;; Show column numbers.
 (setq-default column-number-mode t)
@@ -46,7 +45,8 @@
 (load-theme 'deeper-blue t)
 
 ;; always enable line numbering
-(global-linum-mode 1)
+(global-display-line-numbers-mode 1)
+
 
 ;; Remove Trailing Whitespace on Save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -120,19 +120,19 @@ Version 2017-01-27"
     (uniquify-all-lines-region (point-min) (point-max)))
 
 ;; neotree file browser
-(add-to-list 'load-path "~/.emacs.d/neotree")
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
-(setq-default neo-show-hidden-files t)
+;(add-to-list 'load-path "~/.emacs.d/neotree")
+;(require 'neotree)
+;(global-set-key [f8] 'neotree-toggle)
+;(setq-default neo-show-hidden-files t)
 
 ;; ace-window for character-based window switching
 (global-set-key (kbd "C-x o") 'ace-window)
 
-;; Projectile Settings
-(projectile-global-mode)
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+;;; Projectile Settings
+;(projectile-global-mode)
+;(projectile-mode +1)
+;(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+;(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 ;; Magit Git Porcelain
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -150,8 +150,8 @@ Version 2017-01-27"
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; Enable autopep8
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+;(require 'py-autopep8)
+;(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 ;;Use flycheck instead of flymake
 (when (load "flycheck" t t)
