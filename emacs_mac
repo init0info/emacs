@@ -6,7 +6,7 @@
  '(column-number-mode t)
  '(display-battery-mode t)
  '(inhibit-startup-screen t)
- '(package-selected-packages '(linum-relative magit markdown-mode treemacs))
+ '(package-selected-packages '(0blayout linum-relative magit markdown-mode treemacs))
  '(python-shell-interpreter "python3")
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -178,3 +178,31 @@ Version 2017-01-27"
 (setq treemacs-width 45)
 
 (global-set-key (kbd "M-0") 'treemacs-select-window)
+
+;; Markdown mode
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown")
+  :bind (:map markdown-mode-map
+         ("C-c C-e" . markdown-do)))
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist
+             '("\\.\\(?:md\\|markdown\\|mkd\\|mdown\\|mkdn\\|mdwn\\)\\'" . markdown-mode))
+
+(autoload 'gfm-mode "markdown-mode"
+   "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
+(with-eval-after-load 'markdown-mode
+  (define-key markdown-mode-map (kbd "C-c C-e") #'markdown-do))
+
+  ;; Set custom markdown preview function
+;;  (setq markdown-live-preview-window-function #'my-markdown-preview-function)
+
+  ;; always open the preview window at the right
+  (setq markdown-split-window-direction 'right)
+
+  ;; delete exported HTML file after markdown-live-preview-export is called
+  (setq markdown-live-preview-delete-export 'delete-on-export)
