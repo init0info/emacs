@@ -7,7 +7,8 @@
  '(display-battery-mode t)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(elpy markdown-mode paradox treemacs-magit treemacs-projectile))
+   '(elpy markdown-mode paradox persistent-scratch sml-mode
+          treemacs-magit treemacs-projectile))
  '(python-shell-interpreter "python3")
  '(show-paren-mode t)
  '(tool-bar-mode nil))
@@ -213,3 +214,7 @@ Version 2017-01-27"
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
+
+;; Persistent scratch, just because
+(persistent-scratch-setup-default)
+(persistent-scratch-autosave-mode 1)
